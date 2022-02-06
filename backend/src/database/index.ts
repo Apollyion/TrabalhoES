@@ -1,11 +1,12 @@
 import { Pool } from 'pg'
+import { config } from '../config'
 
 const db = new Pool({
     host: 'localhost',
-    user: 'postgres',
-    password: '01075783',
-    database: 'deliveryman',
-    port: 5432
+    user: config.POSTGRES_USER,
+    password: config.POSTGRES_PASSWORD,
+    database: config.POSTGRES_DATABASE,
+    port: Number(config.POSTGRES_PORT)
 })
 
 const connect = async () => {

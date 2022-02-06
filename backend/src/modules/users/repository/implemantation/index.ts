@@ -1,25 +1,77 @@
-import { IUser } from "../../userModel";
-import { IRepositoryUSer } from "../IRepositoryUser";
-import { hashSync } from 'bcrypt'
+import { IAdress, IUser } from "../../userModel";
+import { ICreateUser, IRepositoryUSer } from "../IRepositoryUser";
+import { hashSync } from "bcrypt";
 import { db } from "../../../../database";
-
 export class UserRepository implements IRepositoryUSer {
-  async createUser(body: IUser) {
-    const text = `INSERT INTO users (full_name, email, password, phone) values ($1, $2, $3, $4) RETURNING *`
-    const passwordHash = hashSync(body.password, 8)
-    const values = [body.full_name, body.email, passwordHash, body.phone]
+  async createUser({ user, adresses }: ICreateUser) {
+    const passwordHash = hashSync(String(user.password), 8);
 
-    const response = await db.query(text, values)
+    //user
+    const textUser = `INSERT INTO users (type, full_name, description, document, email, password) values ($1, $2, $3, $4, $5, $6) RETURNING *`;
+    const valuesUser = [
+      user.type,
+      user.full_name,
+      user.description,
+      user.document,
+      user.email,
+      passwordHash,
+    ];
+
+    const responseUser = await db.query(textUser, valuesUser);
+
+    let userCreated = responseUser.rows[0] as IUser;
+
+    //adresss
+    const textAdress = `INSERT INTO adresses (street, district, number, city, state, user_id) values ($1, $2, $3, $4, $5, $6) RETURNING *`;
     
-    return  response.rows[0]
+    const Adresses: IAdress [] = []
+    for await (const adress of adresses) {
+      const valuesAdress = [
+        adress.street,
+        adress.district,
+        adress.number,
+        adress.city,
+        adress.state,
+        userCreated.id
+      ];
+
+      const responseAdress = await db.query(textAdress, valuesAdress);
+
+      Adresses.push(responseAdress.rows[0])
+    }
+
+    userCreated.adresses = Adresses
+
+    return userCreated
   }
 
   async findUserByEmail(email: string) {
-    const text = `SELECT * FROM users WHERE users.email=$1`
-    const values = [email]
+    const text = `SELECT * FROM users WHERE users.email=$1`;
+    const values = [email];
 
-    const respose = await db.query(text, values)
+    const response = await db.query(text, values);
 
-    return respose.rows[0]
+    return response.rows[0];
+  }
+
+  async findUserById(id: string) {
+    //user
+    const textUser = `SELECT * FROM users WHERE users.id=$1`;
+    const valuesUser = [id];
+
+    const responseUser = await db.query(textUser, valuesUser);
+    const user = responseUser.rows[0] as IUser;
+    delete user.password
+
+    //adresses
+    const textAdress = `SELECT * FROM adresses a WHERE a.user_id=$1`;
+    const valuesAdress = [id];
+
+    const responseAdresses = await db.query(textAdress, valuesAdress)
+    const adresses = responseAdresses.rows as IAdress[];
+
+    user.adresses = adresses
+
+    return user;
   }
 }

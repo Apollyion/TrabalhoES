@@ -1,6 +1,11 @@
-import { IUser } from "../userModel";
+import { IAdress, IUser } from "../userModel";
 
+export interface ICreateUser {
+  user: IUser;
+  adresses: IAdress[];
+}
 export interface IRepositoryUSer {
-  createUser: (body: IUser) => Promise<any>;
-  findUserByEmail: (email: string) => Promise<any>
+  createUser: ({user, adresses}: ICreateUser) => Promise<any>;
+  findUserByEmail: (email: string) => Promise<IUser>;
+  findUserById: (id: string) => Promise<IUser>;
 }

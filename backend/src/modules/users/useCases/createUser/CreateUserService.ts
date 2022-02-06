@@ -1,21 +1,31 @@
+import AppError from "../../../../errors/AppError";
 import { IRepositoryUSer } from "../../repository/IRepositoryUser";
-import { IUser } from "../../userModel";
+import { IAdress, IUser } from "../../userModel";
 
+interface IRequest {
+  user: IUser;
+  adresses: IAdress[];
+}
 export class CreateUserService {
   private userRepository: IRepositoryUSer
   constructor(userRepository: IRepositoryUSer) {
     this.userRepository = userRepository
   }
-  async execute(body: IUser) {
-    const userExists = await this.userRepository.findUserByEmail(body.email)
 
-    if(userExists) {
-      console.log("Ja existe");
-      return;
+  async execute({ user, adresses }:IRequest) {
+    const userAlredyExists = await this.userRepository.findUserByEmail(user.email)
+
+    if(userAlredyExists) {
+      throw new AppError('Email já está em uso!')
     }
 
-    const response = await this.userRepository.createUser(body)
+    const userCreated = await this.userRepository.createUser({
+      user,
+      adresses
+    }) as IUser
 
-    return response
+    delete userCreated.password
+
+    return userCreated
   }
 }
