@@ -60,17 +60,20 @@ export class UserRepository implements IRepositoryUSer {
     const valuesUser = [id];
 
     const responseUser = await db.query(textUser, valuesUser);
-    const user = responseUser.rows[0] as IUser;
-    delete user.password
+    const user = responseUser?.rows[0] as IUser;
+    if(user) delete user.password
 
     //adresses
     const textAdress = `SELECT * FROM adresses a WHERE a.user_id=$1`;
     const valuesAdress = [id];
 
     const responseAdresses = await db.query(textAdress, valuesAdress)
-    const adresses = responseAdresses.rows as IAdress[];
 
-    user.adresses = adresses
+    if(responseAdresses.rows.length > 0) {
+      const adresses = responseAdresses?.rows as IAdress[];
+  
+      user.adresses = adresses
+    }
 
     return user;
   }

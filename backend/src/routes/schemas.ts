@@ -26,3 +26,17 @@ export const LoginSchema = {
     password: Joi.string().required()
   })
 }
+
+export const DeliverySchema = {
+  body: Joi.object({
+	item_name: Joi.string().required(),
+  description: Joi.string(),
+  street: Joi.string(),
+  district: Joi.string(),
+  number: Joi.number(),
+  city: Joi.string(),
+  state: Joi.string(),
+  complement:Joi.string(),
+  created_by: Joi.string().required()
+  })
+}

@@ -31,7 +31,7 @@ export async function ensureAutheticaded(
     const user = await userRepository.findUserById(user_id)
 
     if(!user){
-      throw new AppError("Confirme your email first")
+      throw new AppError("User not found!", 404)
     }
     
     request.user = {
