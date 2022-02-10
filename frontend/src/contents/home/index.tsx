@@ -14,6 +14,7 @@ import {
   ClientHomeContainer,
   Container,
   ContainerAdreses,
+  ContainerLoading,
   DeliveryContainer,
   DeliveryItem,
   DeliveryManHomeContainer,
@@ -26,8 +27,9 @@ import { IoMdAddCircle } from "react-icons/io";
 import { InputPrimary } from "../../components/InputPrimary";
 import { useForm } from "react-hook-form";
 import ButtonPrimary from "../../components/ButtonPrimary";
-import * as yup from 'yup'
+import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import SpinnerLoader from "../../components/Loaders/SpinerLoader";
 export interface IDeliveriProps {
   id: string;
   item_name: string;
@@ -88,7 +90,7 @@ export function ContentHome() {
     const [openModal, setOpenModal] = useState(false);
     const [deliveries, setDeliveries] = useState<IDeliveriProps[]>([]);
 
-    console.log("errors ", errors)
+    console.log("errors ", errors);
     const onSubmit = handleSubmit(async (data) => {
       const formData = {
         ...data,
@@ -201,43 +203,49 @@ export function ContentHome() {
         </button>
 
         <DeliveryContainer>
-          {deliveries &&
-            deliveries.map((item) => (
-              <DeliveryItem key={item.id}>
-                <Section>
-                  <p>
-                    <strong>Nome:</strong> {item.item_name}
-                  </p>
-                  <p>
-                    <strong>Descrição:</strong> {item.description}
-                  </p>
-                  <p>
-                    <strong>Staus:</strong> {status[item.status]}
-                  </p>
-                </Section>
-                <ContainerAdreses>
-                  <span>
-                    <h2>Enderço de origem</h2>
-                    <p>{user?.adresses[0].street}</p>
-                    <p>{user?.adresses[0].district}</p>
-                    <p>{user?.adresses[0].number}</p>
-                    <p>{user?.adresses[0].city}</p>
-                    <p>{user?.adresses[0].state}</p>
-                    <p>{user?.adresses[0].complement}</p>
-                  </span>
+          {deliveries.length > 0 ? (
+            <>
+              {deliveries &&
+                deliveries.map((item) => (
+                  <DeliveryItem key={item.id}>
+                    <Section>
+                      <p>
+                        <strong>Nome:</strong> {item.item_name}
+                      </p>
+                      <p>
+                        <strong>Descrição:</strong> {item.description}
+                      </p>
+                      <p>
+                        <strong>Staus:</strong> {status[item.status]}
+                      </p>
+                    </Section>
+                    <ContainerAdreses>
+                      <span>
+                        <h2>Enderço de origem</h2>
+                        <p>{user?.adresses[0].street}</p>
+                        <p>{user?.adresses[0].district}</p>
+                        <p>{user?.adresses[0].number}</p>
+                        <p>{user?.adresses[0].city}</p>
+                        <p>{user?.adresses[0].state}</p>
+                        <p>{user?.adresses[0].complement}</p>
+                      </span>
 
-                  <span>
-                    <h2>Enderço de destino</h2>
-                    <p>{item.street}</p>
-                    <p>{item.district}</p>
-                    <p>{item.number}</p>
-                    <p>{item.city}</p>
-                    <p>{item.state}</p>
-                    <p>{item.complement}</p>
-                  </span>
-                </ContainerAdreses>
-              </DeliveryItem>
-            ))}
+                      <span>
+                        <h2>Enderço de destino</h2>
+                        <p>{item.street}</p>
+                        <p>{item.district}</p>
+                        <p>{item.number}</p>
+                        <p>{item.city}</p>
+                        <p>{item.state}</p>
+                        <p>{item.complement}</p>
+                      </span>
+                    </ContainerAdreses>
+                  </DeliveryItem>
+                ))}
+            </>
+          ) : (
+            <h2>Nenhuma entrega encontrada!</h2>
+          )}
         </DeliveryContainer>
       </ClientHomeContainer>
     );
@@ -443,7 +451,9 @@ export function ContentHome() {
   return (
     <>
       {loading ? (
-        <h2>loading...</h2>
+        <ContainerLoading>
+          <SpinnerLoader sizeSpinner={40} colorSpinner="#00AFFE" />
+        </ContainerLoading>
       ) : (
         <Container>
           {user?.type === "CLIENT" && <ClientHome />}
