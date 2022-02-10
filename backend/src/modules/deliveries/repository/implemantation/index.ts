@@ -26,10 +26,11 @@ export class DeliveryRepository implements IDeliveryRepository {
     let variable = 0;
     let text = `SELECT * FROM deliveries`;
     
+    console.log("status ", status)
     if(search) text += ` WHERE deliveries.item_name ILIKE $${variable+=1}`
-    if(delivery_by) text += ` ${!!search ? "AND" : "WHERE"} deliveries.delivered_by=$${variable+=1}`
-    if(created_by) text += ` ${!!search ? "AND" : "WHERE"} deliveries.created_by=$${variable+=1}`
-    if(status) text += `AND deliveries.status=$${variable+=1}`
+    if(delivery_by) text += ` ${!!search ? " AND" : " WHERE"} deliveries.delivered_by=$${variable+=1}`
+    if(created_by) text += ` ${!!search ? " AND" : " WHERE"} deliveries.created_by=$${variable+=1}`
+    if(status) text += `${(!!delivery_by && !! created_by) ? " AND" : " WHERE"} deliveries.status=$${variable+=1}`
 
     text += ` ORDER BY deliveries.created_at DESC`
     text+= ` LIMIT $${variable+=1} OFFSET $${variable += 1}`

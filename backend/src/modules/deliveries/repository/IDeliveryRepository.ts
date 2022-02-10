@@ -6,10 +6,11 @@ export type GetDeliveryProps = {
   delivery_by?: string;
   offset?: number;
   limit?: number;
+  status?: string
 }
 
 export interface IDeliveryRepository {
   createDelivery: (body: IDelivery) => Promise<any>
-  getDeliveries: ({ search, delivery_by, created_by, offset, limit }: GetDeliveryProps) => Promise<any>
+  getDeliveries: ({ search, delivery_by, status, created_by, offset, limit }: GetDeliveryProps) => Promise<any>
   getDeliveryById: (deliveryId: string) => Promise<any>
 }
