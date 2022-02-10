@@ -10,7 +10,7 @@ export function getAPIClient(ctx?: any) {
   const { "deliveryman.token": token } = parseCookies(ctx);
 
   const api = axios.create({
-    baseURL: "http://3.85.50.34",
+    baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     headers: {
       Authorization: `Bearer ${token}`
     }

@@ -17,7 +17,7 @@ CREATE TABLE adresses(
   id uuid DEFAULT uuid_generate_v4(),
   street VARCHAR, -- rua
   district VARCHAR, -- bairro
-  number INTEGER, -- numero
+  number VARCHAR, -- numero
   city VARCHAR, -- cidade
   state VARCHAR, -- estado
   user_id uuid NOT NULL,

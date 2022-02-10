@@ -15,6 +15,7 @@
     "pg": "^8.7.3"
   },
   "scripts": {
+    "start": "node dist/app.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/app.ts"
   },

@@ -2,11 +2,10 @@ import { Pool } from 'pg'
 import { config } from '../config'
 
 const db = new Pool({
-    host: 'localhost',
-    user: config.POSTGRES_USER,
-    password: config.POSTGRES_PASSWORD,
-    database: config.POSTGRES_DATABASE,
-    port: Number(config.POSTGRES_PORT)
+  connectionString: config.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  }
 })
 
 const connect = async () => {
