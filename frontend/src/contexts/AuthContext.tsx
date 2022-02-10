@@ -34,27 +34,8 @@ let authChannel: any;
 const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState({} as any);
+  const [user, setUser] = useState({} as IUser);
   const isAuthenticated = !!user;
-
-  useEffect(() => {
-    try {
-      authChannel = new BroadcastChannel('auth');
-
-      authChannel.onmessage = (message: any) => {
-        switch (message.data) {
-          case 'signOut':
-            Router.push('/login');
-            break;
-          case 'signIn':
-            Router.push('/home');
-            break;
-          default:
-            break;
-        }
-      }
-    } catch (error) { }
-  }, []);
 
   useEffect(() => {
     const { 'deliveryman.token': token } = parseCookies();
@@ -65,10 +46,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
           Authorization: `Bearer ${token}`
         } as CommonHeaderProperties
 
-        const response = await getMyProfile();
-
-        console.log("response ", response)
-        setUser(response);
+        try {
+          const response = await getMyProfile();
+          setUser(response);
+        }catch(error) {
+          destroyCookie(null, 'deliveryman.token', { path: "/" });
+          Router.push("/")
+        }
+      }else {
+        Router.push('/')
       }
     }
 
@@ -91,9 +77,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         Authorization: `Bearer ${data.token}`
       } as CommonHeaderProperties
 
-      authChannel?.postMessage('signIn');
-
       Router.push('/home');
+      document.location.reload()
     } catch (error: any) {
       throw error.error
     }

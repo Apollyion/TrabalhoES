@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Container, DeliveryManHomeContainer, Header } from "./styles";
 
@@ -13,24 +14,22 @@ export function ContentHome() {
     return(
       <DeliveryManHomeContainer>
         <Header>
-          <p>Entregas diponiveis</p>
+          <p>Todas as entregas disponiveis</p>
           <p>Minhas entregas</p>
           <p>Meus dados</p>
         </Header>
+
+        <h2>Home do deliveryman</h2>
       </DeliveryManHomeContainer>
     )
   }
 
   const { user } = useAuth()
 
-
   return(
     <Container>
-      {user?.type === "CLIENT" ? (
-        <ClientHome />
-      ): (
-        <DeliveryManHome />
-      )}
+      {user?.type === "CLIENT" && <ClientHome />}
+      {user?.type === "DELIVERYMAN" && <DeliveryManHome />}
     </Container>
   )
 }
