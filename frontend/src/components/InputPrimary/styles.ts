@@ -65,7 +65,7 @@ export const Title = styled.h6<TitleProps>`
   transition: 0.2s ease all;
   opacity: ${({ disabled, disabledStyle }) => disabled || disabledStyle ? '0.6' : ''};
   font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 
   small {
     font-size: 1.1rem;

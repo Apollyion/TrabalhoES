@@ -9,7 +9,7 @@ interface ButtonPrimaryProp
   leftElement?: ReactElement;
   rightElement?: ReactElement;
   textButton: string;
-  styleProp: CSSProp;
+  styleProp?: CSSProp;
   category?: "Primary" | "Outline";
   disabled: boolean;
   width: string;
@@ -31,7 +31,7 @@ const ButtonPrimary = ({
   // const Button = Styles[category]
 
   return (
-    <Container styleProp={styleProp} width={width} disabled={false}>
+    <Container styleProp={styleProp as CSSProp} width={width} disabled={false}>
       {loading ? (
         <SpinnerLoader loading={loading} />
       ) : (

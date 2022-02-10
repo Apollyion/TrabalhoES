@@ -8,13 +8,14 @@ export default function Home() {
     <>
       <Head>
         <title>Home | deliveryman</title>
-        <ContentHome />
       </Head>
+      <ContentHome />
     </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = withSSRAuth(async (context) => {
+
   return {
     props: {
     }

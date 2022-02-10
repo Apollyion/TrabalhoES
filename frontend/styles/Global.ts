@@ -38,6 +38,7 @@ export const GlobalStyle = createGlobalStyle`
 
     &::-webkit-scrollbar {
       width: 10px;
+      background: #E5E4F1;
     }
   
     &::-webkit-scrollbar-track {
@@ -50,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
       width: 50px; 
+      background: #BBB8D9;
     }
   }
 

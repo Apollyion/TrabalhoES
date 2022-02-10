@@ -22,5 +22,5 @@ export const Container = styled.button<ButtonStyleProp>`
   background: #00AFFE;
   color: #FFF;
   font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 `;

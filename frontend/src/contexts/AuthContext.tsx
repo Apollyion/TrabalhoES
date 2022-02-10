@@ -6,14 +6,27 @@ import { signUpRequest, signInRequest, getMyProfile } from "../services/auth";
 import { api } from "../services/api";
 import { CommonHeaderProperties } from "../services/axios";
 
-interface IUser {
+
+interface IAdress {
+  street: string;
+  district: string;
+  number: number;
+  city: string;
+  state: string;
+  complement: string;
+}
+export interface IUser {
+  id?:string;
   type: "CLIENT" | "DELIVERYMAN";
   description: string;
   full_name: string;
   document: string;
   email: string;
   password: string;
+  adresses: IAdress[];
 }
+
+
 type SignInCredentials = {
   email: string;
   password: string;
@@ -86,6 +99,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   function signOut() {
     destroyCookie(null, 'deliveryman.token', { path: "/" });
+    setUser({} as IUser)
 
     Router.push('/login');
   }
