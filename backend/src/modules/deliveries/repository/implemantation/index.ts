@@ -26,7 +26,6 @@ export class DeliveryRepository implements IDeliveryRepository {
     let variable = 0;
     let text = `SELECT * FROM deliveries`;
     
-    console.log("status ", status)
     if(search) text += ` WHERE deliveries.item_name ILIKE $${variable+=1}`
     if(delivery_by) text += ` ${!!search ? " AND" : " WHERE"} deliveries.delivered_by=$${variable+=1}`
     if(created_by) text += ` ${!!search ? " AND" : " WHERE"} deliveries.created_by=$${variable+=1}`
