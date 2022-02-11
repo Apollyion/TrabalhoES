@@ -1,9 +1,9 @@
 # SISTEMA DE ENTREGAS PARA MICROEMPREENDEDORES
 
->  UNIVERSIDADE FEDERAL DO CEARÁ CAMPUS DE SOBRAL
->  CURSO DE ENGENHARIA DE COMPUTAÇÃO 
->  DISCIPLINA: ENGENHARIA DE SOFTWARE
->  PROFESSOR: IÁLIS CAVALCANTE DE PAULA JUNIOR
+>  **UNIVERSIDADE FEDERAL DO CEARÁ CAMPUS DE SOBRAL** <br>
+>  **CURSO DE ENGENHARIA DE COMPUTAÇÃO** <br>
+>  **DISCIPLINA:** ENGENHARIA DE SOFTWARE <br>
+>  **PROFESSOR:** IÁLIS CAVALCANTE DE PAULA JUNIOR
 
 #### EQUIPE:
 - Ákyla de Aquino Pinto (412723)
@@ -15,14 +15,10 @@
 - Sávio Araújo Gomes (474201)
 
 - - -
-### ÍNDICE
-[TOC]
-
-- - -
 ## INTRODUÇÃO
 
-O Brasil se tornou o novo epicentro da pandemia do novo coronavírus, com mais de meio milhão de pessoas diagnosticadas com COVID-19. Nesse contexto, é irrevogável pensar nos prejuízos que foram causados aos mais diversos ramos do mercado de trabalho. Vários setores foram atingidos e a população se encontrou em um dos momentos mais difíceis economicamente, onde muitos tiveram que buscar novas maneiras de se sustentar durante a crise. 
-Durante esse período, a tecnologia foi uma grande ferramenta de sustentação da economia, tendo em vista o isolamento social e o aumento de casos da COVID-19. A mesma desempenhou funções de suma importância, como por exemplo, proporcionar meios alternativos de comunicação audiovisual e a utilização de inúmeros aplicativos que auxiliam o trabalhador, assim, suprindo algumas necessidades em determinado contexto, tanto no âmbito pessoal quanto no profissional.
+O Brasil se tornou o novo epicentro da pandemia do novo coronavírus, com mais de meio milhão de pessoas diagnosticadas com COVID-19. Nesse contexto, é irrevogável pensar nos prejuízos que foram causados aos mais diversos ramos do mercado de trabalho. Vários setores foram atingidos e a população se encontrou em um dos momentos mais difíceis economicamente, onde muitos tiveram que buscar novas maneiras de se sustentar durante a crise. <br>
+Durante esse período, a tecnologia foi uma grande ferramenta de sustentação da economia, tendo em vista o isolamento social e o aumento de casos da COVID-19. A mesma desempenhou funções de suma importância, como por exemplo, proporcionar meios alternativos de comunicação audiovisual e a utilização de inúmeros aplicativos que auxiliam o trabalhador, assim, suprindo algumas necessidades em determinado contexto, tanto no âmbito pessoal quanto no profissional. <br>
 É nesse sentido que viu-se a necessidade de desenvolver uma aplicação que auxilie os pequenos e médios empresários, relacionados à serviços de entrega, que passam por dificuldades econômicas e não se encontram em condições de manter um empregado para realizar as entregas de sua empresa.
 
 
@@ -49,12 +45,13 @@ Os diagramas de modelagem foram de suma importância para a análise e entendime
 
 Por fim, o website, em seu atual estado, apresenta resultados satisfatórios, uma vez que é possível, por meio do mesmo, realizar o cadastro de entregadores e empresas, fornecendo também a demanda de entregas, assim, o entregador podendo ou não aceitar a demanda.
 
-## <a name="diagrama"></a> DIAGRAMAS
+## <a name="diagramas"></a> DIAGRAMAS
 
 #### Diagrama de Classes
 
 ![](https://i.imgur.com/qphnGnS.png)
 
+* * *
 
 #### Diagramas de Sequencia
 
@@ -62,7 +59,7 @@ Por fim, o website, em seu atual estado, apresenta resultados satisfatórios, um
 ![](https://i.imgur.com/klEw29M.png)
 ![](https://i.imgur.com/9AWg2DR.png)
 
-
+* * *
 
 #### Diagrama de Caso de Uso
 ![](https://i.imgur.com/EztQHbd.png)
