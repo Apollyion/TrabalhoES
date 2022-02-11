@@ -45,6 +45,18 @@ Os diagramas de modelagem foram de suma importância para a análise e entendime
 
 Por fim, o website, em seu atual estado, apresenta resultados satisfatórios, uma vez que é possível, por meio do mesmo, realizar o cadastro de entregadores e empresas, fornecendo também a demanda de entregas, assim, o entregador podendo ou não aceitar a demanda.
 
+## ORÇAMENTO
+
+O orçamento em torno do nosso web site seria da seguinte forma:  
+
+ Equipe se encontra atualmente com 7 membros.  
+
+ Nossa jornada de trabalho seria 40 horas no mês, ou seja, trabalharíamos 10 horas semanais. 
+
+  De acordo com pesquisas, o salário inicial de um desenvolvedor web JR é estimado em R$ 2.929,48/mês, variando de acordo com o nível de experiencia, como jr, sênior,front-end,Full stack, podendo chegar a chegando a 4.800,00. 
+
+Nosso salário na média de R$ 4.800 seria dividido por nossa carga horaria de 40h mensais e com as 10h semanais.
+
 ## <a name="diagramas"></a> DIAGRAMAS
 
 #### Diagrama de Classes
@@ -69,3 +81,5 @@ Por fim, o website, em seu atual estado, apresenta resultados satisfatórios, um
 ## REFERENCIAS
 <a name="teste">[1]</a> ROSA, EDUARDO. 2020 tem disparada em reclamações por atraso na entrega de produtos. Noticias.reclameaqui.com.br. Disponível em: <https://noticias.reclameaqui.com.br/noticias/2020-tem-disparada-em-reclamacoes-por-atraso-na-entrega-de-p_4111/>. Acesso em: 10  fev.  2022.
 
+
+## LINK YOUTUBE: https://youtu.be/Ab6t4w2szeI 
